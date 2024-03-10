@@ -65,7 +65,7 @@ Caso o usuário tenha alterado algum nome das saídas geradas anteriormente, ser
 Para utilizar o modelo, abra o código "apply_model.py" e edite o nome do modelo para qual modelo vai utilizar (model_featureenvy3_f9.pkl ou model_longmethod3_f9.pkl). Execute o código.
 
 ```Python
-model_name = 'model_featureenvy3_f9.pkl'  # Substitua pelo nome do modelo desejado
+model_name = 'model_featureenvy3.pkl'  # Substitua pelo nome do modelo desejado
 ```
 
 O modelo é carregado e faz as previsões, gerando uma arquivo "prediction_results.csv" com a previsão se possui ou não o code smell do modelo para cada arquivo java.
