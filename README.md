@@ -62,7 +62,7 @@ Caso o usuário tenha alterado algum nome das saídas geradas anteriormente, ser
 
 ### Utilização do modelo
 
-Para utilizar o modelo, abra o código "apply_model.py" e edite o nome do modelo para qual modelo vai utilizar (model_featureenvy3_f9.pkl ou model_longmethod3_f9.pkl). Execute o código.
+Para utilizar o modelo, abra o código "apply_model.py" e edite o nome do modelo para qual modelo vai utilizar (model_featureenvy3.pkl, model_longmethod3.pkl,model_dataclass3.pkl ou model_blob3.pkl). Execute o código.
 
 ```Python
 model_name = 'model_featureenvy3.pkl'  # Substitua pelo nome do modelo desejado
