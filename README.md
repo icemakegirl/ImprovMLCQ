@@ -1,20 +1,5 @@
 # ImproveMLCQ
-# Modelo ML para Detecção de Code Smell Long Method e Feature Envy em projetos Open-Source no GitHub
-
-## Preparação do Ambiente para rodar o modelo
-
-### Seleção do repositório do projeto no GitHub
-
-Para utilizar o modelo é necessário que o usuário selecione um projeto desenvolvido em java no GitHub e faça o download do repositório.
-
-Abra o código "get_repository_info.py" e insira o endereço do repositório e o token da sua conta no GitHub.
-
-```python
-token = "insira_seu_token_aqui" #Insira seu token do GitHub aqui
-repository_urls = ["https://github.com/weblegacy/struts1", "https://github.com/r5v9/persist"]  # Adicione as URLs dos repositórios aqui
-```
-
-Execute o código e o arquivo "repository\_info.csv" será criado. Ele contém os dados para a extração das seguintes features: commits, stars, LOC e number\_of\_contributors.
+# Modelo ML para Detecção de Code Smell Long Method, Feature Envy, DataClass e Blob em projetos Open-Source no GitHub
 
 ### Ferramentas
 
@@ -52,13 +37,9 @@ O Designate gera diversas saídas, mas, para o treinamento do modelo, somente fo
 
 Através desses dois csvs, iremos obter os dados para a extração das seguintes features: smell_Designite_longmethod, smell_Designite_num_aglomeration e smell_Designite_agglomeration.
 
-### Preparação e unificação dos dados
+### Dados
 
-Para preparar e unificar os dados que vão ser utilizados no modelo, crie uma pasta com todas as saídas e execute o código "merge.py".
-
-O arquivo "result.csv" é criado com o merge dos dados e pronto para execução do modelo.
-
-Caso o usuário tenha alterado algum nome das saídas geradas anteriormente, será necessário alterar o caminho no código.
+O arquivo out.csv contem as analises das erramentas junto com o dataset MLCQ, e esse arquivo que é utilizado dentro do "apply_model.py" para utilizar os modelos
 
 ### Utilização do modelo
 
