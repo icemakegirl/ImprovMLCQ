@@ -1,0 +1,18 @@
+,Top-5 algorithms,,,,,
+Name,xgboost,rf,dt,et,light,Sum
+type,TRUE,TRUE,TRUE,TRUE,FALSE,4
+ck_method_modifiers,TRUE,FALSE,FALSE,FALSE,TRUE,2
+smell_pmd,TRUE,TRUE,TRUE,TRUE,TRUE,5
+ck_method_stringliteralsqty,TRUE,FALSE,TRUE,TRUE,TRUE,4
+smell_pmd_dataclass,TRUE,TRUE,TRUE,TRUE,FALSE,4
+smell_designite_num_aglomeration,FALSE,TRUE,TRUE,TRUE,TRUE,4
+background,TRUE,TRUE,TRUE,TRUE,FALSE,4
+ck_method_cboModified,FALSE,FALSE,FALSE,FALSE,TRUE,1
+ck_method_uniquewordsqty,FALSE,TRUE,TRUE,FALSE,TRUE,3
+loc,FALSE,TRUE,TRUE,TRUE,TRUE,4
+commits,FALSE,TRUE,TRUE,TRUE,TRUE,4
+ck_class_numbersqty,TRUE,FALSE,FALSE,FALSE,FALSE,1
+CK_Method_methodsInvokedIndirectLocalQty,TRUE,FALSE,FALSE,FALSE,FALSE,1
+ck_class_innerclassesqty,TRUE,FALSE,FALSE,FALSE,FALSE,1
+stars,TRUE,TRUE,FALSE,TRUE,TRUE,4
+number_of_contributors,TRUE,TRUE,TRUE,TRUE,TRUE,5
