@@ -1,0 +1,2 @@
+,Model,Accuracy,AUC,Recall,Prec.,F1,Kappa,MCC
+0,K Neighbors Classifier,0.9003,0.9199,0.6022,0.4555,0.5187,0.4642,0.4699
