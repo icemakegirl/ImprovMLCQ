@@ -1,56 +1,55 @@
 # ImproveMLCQ
-# Modelo ML para Detecção de Code Smell Long Method, Feature Envy, DataClass e Blob em projetos Open-Source no GitHub
+# ML Model for Code Smell Long Method, Feature Envy, DataClass and Blob Detection in Open-Source Projects on GitHub
 
 ### Ferramentas
 
-Antes da utilização das ferramentas, o usuário deve copiar todos os arquivos .java para uma pasta única.
+Before using the tools, the user must copy all .java files to a single folder.
 
 #### PMD
 
-Para utilizar a ferramenta PMD e obter os dados, o usuário deve fazer o download através do site https://pmd.github.io/ e, em seguida, realizar as seguintes etapas:
+To use the PMD tool and obtain the data, the user must download it from the website https://pmd.github.io/ and then perform the following steps:
 
-1. Extair o arquivo para, por exemplo, C:\pmd-bin-7.0.0-rc4
-2. Executar a linha de comando:
-3. "<caminho_para_pmd.bat_pasta_bin_na_pasta_raiz_pmd> check -d <caminho_para_a_pasta_com_os_códigos> -R rulesets/java/design.xml -f csv -r <caminho_do_arquivo_csv/report.csv>"
+1. Extract the file to, for example, C:\pmd-bin-7.0.0-rc4
+2. Run the command line:
+3. "<path_to_pmd.bat_bin_folder_in_root_pmd_folder> check -d <path_to_the_folder_with_codes> -R rulesets/java/design.xml -f csv -r <path_to_csv_file/report.csv>"
 
-Após executar a linha de comando, o arquivo "report.csv" é criado. Ele contém os dados para a extração das seguinte features: smell_PMD_num_agglomeration e smell_PMD_longmethod.
-
+After executing the command line, the "report.csv" file is created. It contains the data for extracting the following features: smell_PMD_num_agglomeration and smell_PMD_longmethod.
 ### Organic
 
-Para utilizar a ferramenta Organic e obter os dados, o usuário deve acessar o repositório do OPUS através do link https://github.com/opus-research/organic e baixar o arquivo .jar.
+To use the Organic tool and obtain the data, the user must access the OPUS repository through the link https://github.com/opus-research/organic and download the .jar file.
 
-Para executar a ferramenta, deve executar o seguinte comando:
+To run the tool, you must execute the following command:
 
-– "java -jar <caminho_para_o_organic-v0.1.2.jar> -src <CAMINHO_PROS_ARQUIVOS_DE_CODIGO> -sf output.json"
+– "java -jar <path_to_organic-v0.1.2.jar> -src <PATH_PROS_CODE_FILES> -sf output.json"
 
-O arquivo "output.json" é criado. Ele contém os dados para a extração das seguintes features: smell_Organic_featureenvy e smell_Organic_longmethod.
+The "output.json" file is created. It contains the data for extracting the following features: smell_organic_featureenvy and smell_organic_longmethod.
 
 #### Designate
 
-A ferramenta Designate apresenta diversas versões, a necessária para obter os dados é a DesignateJava e pode ser obtida através do endereço https://www.designite-tools.com/.
+The Designate tool has several versions, the one needed to obtain the data is DesignateJava and can be obtained at https://www.designite-tools.com/.
 
-Com o DesignateJava.jar, execute o seguinte comando:
+With DesignateJava.jar, run the following command:
 
-– "java -jar <caminho_para_o_DesigniteJava.jar> -i <caminho_com_os_arquivos> -o <caminho_saida_com_os_smells>"
+– "java -jar <path_to_the_DesigniteJava.jar> -i <path_with_the_files> -o <path_out_with_the_smells>"
 
-O Designate gera diversas saídas, mas, para o treinamento do modelo, somente foi utilizado as seguintes: ImplementationSmells.csv e DesignSmells.csv.
+Designate generates several outputs, but for model training, only the following were used: ImplementationSmells.csv and DesignSmells.csv.
 
-Através desses dois csvs, iremos obter os dados para a extração das seguintes features: smell_Designite_longmethod, smell_Designite_num_aglomeration e smell_Designite_agglomeration.
+Through these two csvs, we will obtain data to extract the following features: smell_Designite_longmethod, smell_Designite_num_agglomeration and smell_Designite_agglomeration.
 
-### Dados
+### Data
 
-O arquivo out.csv contem as analises das erramentas junto com o dataset MLCQ, e esse arquivo que é utilizado dentro do "apply_model.py" para utilizar os modelos
+The out.csv file contains the tool analyzes along with the MLCQ dataset, and this file is used within "apply_model.py" to use the models
 
-### Utilização do modelo
+### Using the model
 
-Para utilizar o modelo, abra o código "apply_model.py" e edite o nome do modelo para qual modelo vai utilizar (model_featureenvy3.pkl, model_longmethod3.pkl,model_dataclass3.pkl ou model_blob3.pkl). Execute o código.
+To use the model, open the code "apply_model.py" and edit the model name for which model you will use (model_featureenvy3.pkl, model_longmethod3.pkl, model_dataclass3.pkl or model_blob3.pkl). Run the code.
 
 ```Python
-model_name = 'model_featureenvy3.pkl'  # Substitua pelo nome do modelo desejado
+model_name = 'model_featureenvy3.pkl' # Replace with the desired model name
 ```
 
-O modelo é carregado e faz as previsões, gerando uma arquivo "prediction_results.csv" com a previsão se possui ou não o code smell do modelo para cada arquivo java.
+The model is loaded and makes predictions, generating a "prediction_results.csv" file with the prediction of whether or not it has the model's code smell for each java file.
 
-## Observações
+## Comments
 
-Caso apresente dificuldade para rodar algum dos códigos, utlize o Google Colab.
+If you have difficulty running any of the codes, use Google Colab.
