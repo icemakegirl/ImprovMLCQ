@@ -1,7 +1,7 @@
 # ImproveMLCQ
 # ML Model for Code Smell Long Method, Feature Envy, DataClass and Blob Detection in Open-Source Projects on GitHub
 
-### Ferramentas
+### Tools
 
 Before using the tools, the user must copy all .java files to a single folder.
 
