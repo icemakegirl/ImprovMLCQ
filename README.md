@@ -22,7 +22,7 @@ To use the Organic tool and obtain the data, the user must access the OPUS repos
 After executing the command line, the "output.json" file is created. It contains the data for extracting the following features: smell_organic_featureenvy and smell_organic_longmethod.
 
 #### Designate
-webaite: https://www.designite-tools.com/
+website: https://www.designite-tools.com/
 The Designate tool has several versions, the one needed to obtain the data is DesignateJava and can be obtained at website.
 
 With DesignateJava.jar, run the following command:
