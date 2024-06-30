@@ -1,38 +1,32 @@
 import pandas as pd
 from joblib import load
 
-# Carregar os dados
+# Load the data
 data = pd.read_csv('out.csv')
 
-# Nome do modelo
-model_name = 'model_featureenvy3.pkl'  # Substitua pelo nome do modelo desejado
+# model name
+model_name = 'model_featureenvy2.pkl'  # Replace with the desired model name
 
-# Selecionar as características com base no modelo
-if model_name == 'model_longmethod3.pkl':
-    features = data[['smell_Designite_num_aglomeration', 'smell_PMD_num_aglomeration',
-                     'LOC', 'Stars', 'Number_of_Contributors', 'Commits', 'smell_Organic_longmethod',
-                     'smell_Designite_longmethod', 'smell_PMD_longmethod']]
-elif model_name == 'model_featureenvy3.pkl':
-    features = data[['smell_Designite_num_aglomeration', 'smell_PMD_num_aglomeration',
-                     'LOC', 'Stars', 'Number_of_Contributors', 'Commits', 'smell_Organic_featureenvy',
-                     'smell_Designite_aglomeration', 'smell_Designite_longmethod']]
-elif model_name == 'model_dataclass3.pkl':
-    features = data[['agreement_experts','smell_Designite_num_aglomeration','smell_PMD_num_aglomeration','LOC','Watching', 'Number_of_Contributors',
-             'Commits', 'smell_PMD_dataclass', 'smell_Designite_aglomeration', 'smell_PMD_blob','dataclass_label']]
+# Select features based on the model
+if model_name == 'model_longmethod2.pkl':
+    features = data[['type','ck_method_uniquewordsqty','ck_method_assignmentsqty','watching','background','loc','commits','ck_class_numbersqty','smell_designite_num_aglomeration','number_of_contributors','longmethod_label']]
+elif model_name == 'model_featureenvy2.pkl':
+    features = data[['type','ck_method_parametersqty','smell_designite_num_aglomeration','ck_class_fanin','ck_method_assignmentsqty','watching','background','loc','commits','number_of_contributors','featureenvy_label']]
+elif model_name == 'model_dataclass2.pkl':
+    features = data[['stars','number_of_contributors','type','smell_pmd','ck_method_stringliteralsqty','smell_pmd_dataclass','smell_designite_num_aglomeration','background','loc','commits','dataclass_label']]
 elif model_name == 'model_blob3.pkl':
-    features = data[['agreement_experts','smell_Designite_num_aglomeration','smell_PMD_num_aglomeration','LOC','Stars', 'Number_of_Contributors', 'Commits',
-     'smell_PMD_dataclass', 'Organic_WeightedMethodCount', 'smell_PMD_blob','blob_label']]
+    features = data[[['type','smell_pmd','smell_pmd_blob','smell_designite_num_aglomeration','background','ck_method_uniquewordsqty','ck_method_loc','loc','commits','stars','blob_label']]
 else:
-    print('ubstitua o nome do modelo desejado')
+    print('replace the desired model name')
 
 
 
-# Carregar o modelo
+# Load the data
 model = load(model_name)
 
-# Fazer previsões
+# Make predictions
 predictions = model.predict(features)
 
-# Salvar os resultados
+# Save the results
 output = pd.DataFrame({'Type Name': data['Type Name'], 'Prediction': predictions})
 output.to_csv('prediction_results.csv', index=False)
