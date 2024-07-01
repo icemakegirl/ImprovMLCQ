@@ -34,11 +34,34 @@ After executing the command line, Designate generates several outputs, but for m
 Through these two csvs, we will obtain data to extract the following features: smell_designite_longmethod, smell_designite_num_agglomeration and smell_designite_agglomeration.
 
 ### Data
-
+link out.csv and out_with_labelEncoding: https://zenodo.org/records/12602468
 The out.csv file is the extension we make of MLCQ by adding the tool analysis, and this file is used within "apply_model.py" to use the models
 We create data dictionaries that contain all the features: FS1, FS2, FS3 and the definition of each of these features.
 Also contains the files of the top 10 features used for FS3 for each code smell.
-To access these files, go to the Features folder
+To access these files, go to the Features folder.
+
+The label encoding technique was used to transform the columns: which came in text formats into numeric data.
+You can run the code below and modify the out.csv to apply this label encoding technique or download the out_with_labelEncoding.csv file that already comes with this labeling assigned
+
+```
+from sklearn.preprocessing import LabelEncoder
+import pandas as pd
+
+# Load File
+df = pd.read_csv('out.csv')
+
+# Label Encoding
+label_encoder = LabelEncoder()
+
+df['ck_method_constructor']= label_encoder.fit_transform(df['ck_method_constructor'])
+df['ck_method_hasjavadoc']= label_encoder.fit_transform(df['ck_method_hasjavadoc'])
+df['type']= label_encoder.fit_transform(df['type'])
+df['smell_organic']= label_encoder.fit_transform(df['smell_organic'])
+df['smell_pmd']= label_encoder.fit_transform(df['smell_pmd'])
+f['background']= label_encoder.fit_transform(df['background'])
+
+df.to_csv('out.csv', index=False)
+```
 
 ### Using the model
 
@@ -55,3 +78,6 @@ The model is loaded and makes predictions, generating a "prediction_results.csv"
 ## Comments
 
 If you have difficulty running any of the codes, use the notebooks available in the colab notebooks folder.
+In notebooks there will be 3 lines to install the main libraries that will be used to train the model: pycaret, dataframe-image and optuna.
+The lines below this until before the settings of the first smell long method are responsible for loading and checking the file and excluding features that are not necessary for the feature selection.
+It is necessary to run this part from importing the libraries to filtering the columns when running the code for each smell
