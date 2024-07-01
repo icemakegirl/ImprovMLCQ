@@ -7,6 +7,7 @@ Before using these tools, the user must copy all .java files from a project to a
 
 #### PMD
 website: https://pmd.github.io/
+
 To use the PMD tool, the user must download it from the website and perform the following steps:
 
 1. Extract the file to, for example, C:\pmd-bin-7.0.0-rc4
@@ -15,6 +16,7 @@ To use the PMD tool, the user must download it from the website and perform the 
 After executing the command line, the "report.csv" file is created. It contains the data for extracting the following features: smell_pmd_num_agglomeration and smell_pmd_longmethod.
 ### Organic
 OPUS repository: https://github.com/opus-research/organic
+
 To use the Organic tool and obtain the data, the user must access the OPUS repository through the link and download the .jar file and perform the following steps:
 
 1. Run the command line:"java -jar <path_to_organic-v0.1.2.jar> -src <PATH_PROS_CODE_FILES> -sf output.json"
@@ -23,6 +25,7 @@ After executing the command line, the "output.json" file is created. It contains
 
 #### Designate
 website: https://www.designite-tools.com/
+
 The Designate tool has several versions, the one needed to obtain the data is DesignateJava and can be obtained at website.
 
 With DesignateJava.jar, run the following command:
