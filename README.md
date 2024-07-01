@@ -38,6 +38,7 @@ Through these two csvs, we will obtain data to extract the following features: s
 
 ### Data
 link out.csv and out_with_labelEncoding: https://zenodo.org/records/12602468
+
 The out.csv file is the extension we make of MLCQ by adding the tool analysis, and this file is used within "apply_model.py" to use the models
 We create data dictionaries that contain all the features: FS1, FS2, FS3 and the definition of each of these features.
 Also contains the files of the top 10 features used for FS3 for each code smell.
