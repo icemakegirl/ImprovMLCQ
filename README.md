@@ -1,12 +1,13 @@
 # ImproveMLCQ
 
 ### Tools
-Code-smell metric-based tools 
+
 We use three tools do classify code smells: PMD, Organic, Designate.
 Before using these tools, the user must copy all .java files from a project to a single folder.
+The tools were used to extend the MLCQ with metrics and code smells labeling 
 
 #### PMD
-website: https://pmd.github.io/
+WEBSITE: https://pmd.github.io/
 
 To use the PMD tool, the user must download it from the website and perform the following steps:
 
@@ -24,7 +25,7 @@ To use the Organic tool and obtain the data, the user must access the OPUS repos
 After executing the command line, the "output.json" file is created. It contains the data for extracting the following features: smell_organic_featureenvy and smell_organic_longmethod.
 
 #### Designate
-website: https://www.designite-tools.com/
+WEBSITE: https://www.designite-tools.com/
 
 The Designate tool has several versions, the one needed to obtain the data is DesignateJava and can be obtained at website.
 
@@ -66,6 +67,12 @@ f['background']= label_encoder.fit_transform(df['background'])
 
 df.to_csv('out.csv', index=False)
 ```
+### Research Questions
+
+To answer the research questions, we used the notebooks available in the repository.
+For RQ1 we used the notebook: colab notebooks/RQ_1.ipynb
+For RQ2 we used the notebook: colab notebooks/RQ_2.ipynb
+For RQ3 we create 3 notebooks, each of these 3 for 1 feature selection: colab notebooks/RQ_3_fs1.ipynb, colab notebooks/RQ_3_fs2.ipynb and colab notebooks/RQ_3_fs3.ipynb.
 
 ### Using the model
 
