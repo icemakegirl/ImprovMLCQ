@@ -7,7 +7,7 @@ Before using these tools, the user must copy all .java files from a project to a
 The tools were used to extend the MLCQ with metrics and code smells labeling 
 
 #### PMD
-WEBSITE: https://pmd.github.io/
+WEBSITE: [https://pmd.github.io/](https://pmd.github.io/)
 
 To use the PMD tool, the user must download it from the website and perform the following steps:
 
@@ -16,7 +16,7 @@ To use the PMD tool, the user must download it from the website and perform the 
 
 After executing the command line, the "report.csv" file is created. It contains the data for extracting the following features: smell_pmd_num_agglomeration and smell_pmd_longmethod.
 ### Organic
-OPUS repository: https://github.com/opus-research/organic
+WEBSITE: [https://github.com/opus-research/organic](https://github.com/opus-research/ancient-organic)
 
 To use the Organic tool and obtain the data, the user must access the OPUS repository through the link and download the .jar file and perform the following steps:
 
