@@ -3,8 +3,10 @@
 ### Tools
 
 We use three tools do classify code smells: PMD, Organic, Designate.
-Before using these tools, the user must copy all .java files from a project to a single folder.
-The tools were used to extend the MLCQ with metrics and code smells labeling 
+Before using these tools, the user must copy all the project's .java to a single root folder. This folder will be used by the tools to label the code smells.
+The tools were used to extend the MLCQ with metrics and code smells labeling .ck .
+To run the tools we need to download all the projects that are in our ImproveMLCQ dataset locally.
+The path_with_the_files is the path of the projects that were downloaded to run the tools.
 
 #### PMD
 WEBSITE: [https://pmd.github.io/](https://pmd.github.io/)
@@ -12,7 +14,7 @@ WEBSITE: [https://pmd.github.io/](https://pmd.github.io/)
 To use the PMD tool, the user must download it from the website and perform the following steps:
 
 1. Extract the file to, for example, C:\pmd-bin-7.0.0-rc4
-2. Run the command line:"<path_to_pmd.bat_bin_folder_in_root_pmd_folder> check -d <path_to_the_folder_with_codes> -R rulesets/java/design.xml -f csv -r <path_to_csv_file/report.csv>"
+2. Run the command line:"<path_to_pmd.bat_bin_folder_in_root_pmd_folder> check -d <path_with_the_files> -R rulesets/java/design.xml -f csv -r <path_to_csv_file/report.csv>"
 
 After executing the command line, the "report.csv" file is created. It contains the data for extracting the following features: smell_pmd_num_agglomeration and smell_pmd_longmethod.
 ### Organic
@@ -20,14 +22,15 @@ WEBSITE: [https://github.com/opus-research/organic](https://github.com/opus-rese
 
 To use the Organic tool and obtain the data, the user must access the OPUS repository through the link and download the .jar file and perform the following steps:
 
-1. Run the command line:"java -jar <path_to_organic-v0.1.2.jar> -src <PATH_PROS_CODE_FILES> -sf output.json"
+1. Run the command line:"java -jar <path_to_organic-v0.1.2.jar> -src <path_with_the_files> -sf output.json"
 
 After executing the command line, the "output.json" file is created. It contains the data for extracting the following features: smell_organic_featureenvy and smell_organic_longmethod.
 
-#### Designate
+#### Designite
 WEBSITE: https://www.designite-tools.com/
 
 The Designate tool has several versions, the one needed to obtain the data is DesignateJava and can be obtained at website.
+To use Designite we require a student license because Designite is a paid tool.
 
 With DesignateJava.jar, run the following command:
 
