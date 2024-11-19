@@ -73,9 +73,9 @@ df.to_csv('out.csv', index=False)
 ### Research Questions
 
 To answer the research questions, we used the notebooks available in the repository.
-For RQ1 we used the notebook: colab notebooks/RQ_1.ipynb
-For RQ2 we used the notebook: colab notebooks/RQ_2.ipynb
-For RQ3 we create 3 notebooks, each of these 3 for 1 feature selection: colab notebooks/RQ_3_fs1.ipynb, colab notebooks/RQ_3_fs2.ipynb and colab notebooks/RQ_3_fs3.ipynb.
+For RQ1 we used the notebook in the folder colab notebooks/RQ_1.ipynb
+For RQ2 we used the notebook in the folder colab notebooks/RQ_2.ipynb
+For RQ3 we create 3 notebooks, each of these 3 for 1 feature selection in the folder colab notebooks/RQ_3_fs1.ipynb, colab notebooks/RQ_3_fs2.ipynb and colab notebooks/RQ_3_fs3.ipynb.
 
 ### Using the model
 
