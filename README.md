@@ -70,6 +70,7 @@ f['background']= label_encoder.fit_transform(df['background'])
 
 df.to_csv('out.csv', index=False)
 ```
+You can dowload this code label enconder 
 ### Research Questions
 
 To answer the research questions, we used the notebooks available in the repository.
@@ -89,9 +90,12 @@ model_name = 'model_featureenvy2.pkl'
 
 The model is loaded and makes predictions, generating a "prediction_results.csv" file with the prediction of whether or not it has the model's code smell for each java file.
 
+### Packages
+scikit-learn, numpy, optuna, pycaret and os
+
 ## Comments
 
 If you have difficulty running any of the codes, use the notebooks available in the colab notebooks folder.
-In notebooks there will be 3 lines to install the main libraries that will be used to train the model: pycaret, dataframe-image and optuna.
+In notebooks there will be 5 lines to install the main libraries that will be used to train the model: pycaret, dataframe-image and optuna.
 The lines below this until before the settings of the first smell long method are responsible for loading and checking the file and excluding features that are not necessary for the feature selection.
 It is necessary to run this part from importing the libraries to filtering the columns when running the code for each smell
