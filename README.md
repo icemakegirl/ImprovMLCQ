@@ -89,6 +89,8 @@ model_name = 'model_featureenvy2.pkl'
 ```
 
 The model is loaded and makes predictions, generating a "prediction_results.csv" file with the prediction of whether or not it has the model's code smell for each java file.
+### Features
+Inside the feature folder is the .csv file features - all_features.csv and a folder called top10 features code smells. This folder contains the top10 most relevant features for each code smell. On the y-axis are the names of the most relevant features, in order of importance from top to bottom. The x-axis indicates the weight of each feature for each smell.
 
 ### Packages
 scikit-learn, numpy, optuna, pycaret and os
