@@ -1,2 +1,0 @@
-,Model,Accuracy,AUC,Recall,Prec.,F1,Kappa,MCC
-0,Decision Tree Classifier,0.7203,0.8934,0.933,0.2345,0.3748,0.27,0.3773

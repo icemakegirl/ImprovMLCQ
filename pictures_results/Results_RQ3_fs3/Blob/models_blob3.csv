@@ -1,2 +1,0 @@
-,Model,Accuracy,AUC,Recall,Prec.,F1,Kappa,MCC
-0,Voting Classifier,0.7898,0.8636,0.8487,0.4468,0.5854,0.4622,0.5049
