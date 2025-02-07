@@ -41,7 +41,7 @@ After executing the command line, Designate generates several outputs, but for m
 Through these two csvs, we will obtain data to extract the following features: smell_designite_longmethod, smell_designite_num_agglomeration and smell_designite_agglomeration.
 
 ### Data
-link out.csv and out_with_labelEncoding: https://zenodo.org/records/12602468
+link out.csv and out_with_labelEncoding: [Link Zenodo](https://zenodo.org/records/14834187)
 
 The out.csv file is the extension we make of MLCQ by adding the tool analysis, and this file is used within "apply_model.py" to use the models
 We create data dictionaries that contain all the features: FS1, FS2, FS3 and the definition of each of these features.
@@ -70,31 +70,32 @@ f['background']= label_encoder.fit_transform(df['background'])
 
 df.to_csv('out.csv', index=False)
 ```
+We run the Machine Learning and Deep Learning algorithms using out_clean.csv. This file can also be found at: [Link Zenodo](https://zenodo.org/records/14834187)
 You can dowload this code label enconder 
 ### Research Questions
 
 To answer the research questions, we used the notebooks available in the repository.
 For RQ1 we used the notebook in the folder colab notebooks/RQ_1.ipynb
 For RQ2 we used the notebook in the folder colab notebooks/RQ_2.ipynb
-For RQ3 we create 3 notebooks, each of these 3 for 1 feature selection in the folder colab notebooks/RQ_3_fs1.ipynb, colab notebooks/RQ_3_fs2.ipynb and colab notebooks/RQ_3_fs3.ipynb.
+For RQ3 we create 6 notebooks, each of these 6 for 1 feature selection in the folder colab notebooks/DeepLearningMultilabel_FS1.ipynb, notebooks/DeepLearningMultilabel_FS2.ipynb,notebooks/DeepLearningMultilabel_FS3.ipynb, colab notebooks/MachineLearningMultilabelRQ_3_fs1_out_clean.ipynb,colab notebooks/MachineLearningMultilabelRQ_3_fs2_out_clean.ipynb and colab notebooks/MachineLearningMultilabelRQ_3_fs3_out_clean.ipynb.
 
 ### Using the model
 
-To use the model, open the code "apply_model.py" and edit the model name for which model you will use (model_featureenvy2.pkl, model_longmethod2.pkl, model_dataclass2.pkl or model_blob2.pkl). Run the code.
+To use the model, open the code "apply_model.py" and edit the model name for which model you will use (models_multilabel_FS2.pkl and models_multilabel_FS3.pkl). Run the code.
 The number 2 in the nomenclature represents the models that we extracted when we ran FS2, we are using them because they were the ones that had the best results in the experiments
 
 
 ```Python
-model_name = 'model_featureenvy2.pkl' 
+model_name = 'models_multilabel_FS2.pkl' 
 ```
 
 The model is loaded and makes predictions, generating a "prediction_results.csv" file with the prediction of whether or not it has the model's code smell for each java file.
 ### Features
-Inside the feature folder is the .csv file features - all_features.csv and a folder called top10 features code smells. This folder contains the top10 most relevant features for each code smell. On the y-axis are the names of the most relevant features, in order of importance from top to bottom. The x-axis indicates the weight of each feature for each smell.
+Inside the feature folder is the .csv file features - all_features.csv and a file called top5 features code smells. On the y-axis are the names of the most relevant features, in order of importance from top to bottom. The x-axis indicates the weight of each feature for each smell.
 
 ### Packages
 scikit-learn, numpy, optuna, pycaret and os
-
+### Dataset Cleaning
 ## Comments
 
 If you have difficulty running any of the codes, use the notebooks available in the colab notebooks folder.
