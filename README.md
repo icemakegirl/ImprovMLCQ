@@ -70,6 +70,11 @@ f['background']= label_encoder.fit_transform(df['background'])
 
 df.to_csv('out.csv', index=False)
 ```
+
+we clean the dataset and call it out_clean.csv. 
+The data preprocessing phase started with the removal of columns containing more than 50% values. 
+A review of missing records was conducted, and all empty fields were imputed with a value of 0.
+Duplicate rows were removed
 We run the Machine Learning and Deep Learning algorithms using out_clean.csv. This file can also be found at: [Link Zenodo](https://zenodo.org/records/14834187)
 You can dowload this code label enconder 
 ### Research Questions
