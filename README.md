@@ -99,8 +99,11 @@ The model is loaded and makes predictions, generating a "prediction_results.csv"
 Inside the feature folder is the .csv file features - all_features.csv and a file called top5 features code smells. On the y-axis are the names of the most relevant features, in order of importance from top to bottom. The x-axis indicates the weight of each feature for each smell.
 
 ### Packages
-scikit-learn, numpy, optuna, pycaret and os
+scikit-learn, numpy, optuna, pycaret, os, ydata_profiling and os
+
 ### Dataset Cleaning
+Before running the models, it is necessary to clean and standardize the data. Execute the file **"EDA_Improv.ipynb"**, and among its results, you should use the file **"out_clean.csv"** for model execution.
+
 ## Comments
 
 If you have difficulty running any of the codes, use the notebooks available in the colab notebooks folder.
