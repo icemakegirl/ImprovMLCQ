@@ -1,5 +1,6 @@
 # ImprovMLCQ
-
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.16748785.svg)](https://doi.org/10.5281/zenodo.16748785)
+Access full paper [here](SBCARS_2025___ImprovMLCQ.pdf)
 ### Tools
 
 We use three tools do classify code smells: PMD, Organic, Designate.
@@ -111,4 +112,4 @@ In notebooks there will be 5 lines to install the main libraries that will be us
 The lines below this until before the settings of the first smell long method are responsible for loading and checking the file and excluding features that are not necessary for the feature selection.
 It is necessary to run this part from importing the libraries to filtering the columns when running the code for each smell
 
-Access full paper [here](SBCARS_2025___ImprovMLCQ.pdf)
+
