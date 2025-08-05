@@ -110,3 +110,5 @@ If you have difficulty running any of the codes, use the notebooks available in 
 In notebooks there will be 5 lines to install the main libraries that will be used to train the model: pycaret, dataframe-image and optuna.
 The lines below this until before the settings of the first smell long method are responsible for loading and checking the file and excluding features that are not necessary for the feature selection.
 It is necessary to run this part from importing the libraries to filtering the columns when running the code for each smell
+
+Access full paper [here](SBCARS_2025___ImprovMLCQ.pdf)
