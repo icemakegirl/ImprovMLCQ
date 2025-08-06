@@ -106,11 +106,76 @@ scikit-learn, numpy, optuna, pycaret, os, ydata_profiling and os
 ### Dataset Cleaning
 Before running the models, it is necessary to clean and standardize the data. Execute the file **"EDA_Improv.ipynb"**, and among its results, you should use the file **"out_clean.csv"** for model execution.
 
+## How to Run Colab Notebooks
+
+### Prerequisites
+1. Download the dataset files from [Zenodo](https://zenodo.org/records/14834187):
+   - `out.csv`
+   - `out_with_labelEncoding.csv` 
+   - `out_clean.csv`
+2. Have a Google account to access Google Colab
+
+### Step-by-Step Guide
+
+#### 1. Initial Setup (Required for ALL notebooks)
+1. **Open the notebook** in Google Colab
+2. **Install required libraries**:
+   - For **Machine Learning notebooks** only, run these lines at the beginning:
+   ```python
+   !pip install pycaret
+   !pip install dataframe-image
+   !pip install optuna
+   ```
+   - For **Deep Learning notebooks**, no additional library installation is required
+3. **Upload your dataset** to Colab:
+   - Click on the folder icon in the left sidebar
+   - Upload `out_clean.csv` (recommended for model execution)
+   - Or upload `out.csv` if you want to apply label encoding
+
+4. **Run the initial setup section** - this includes:
+   - Importing all necessary libraries
+   - Loading and checking the dataset file
+   - Excluding features that are not necessary for feature selection
+   - **Important**: Always run this section completely before proceeding to smell-specific analysis
+
+#### 2. Running Research Question Notebooks
+
+**For RQ1 (Research Question 1):**
+- Open and run `colab notebooks/RQ_1.ipynb`
+- Follow the initial setup, then execute all cells sequentially
+
+**For RQ2 (Research Question 2):**
+- Open and run `colab notebooks/RQ_2.ipynb`
+- Follow the initial setup, then execute all cells sequentially
+
+**For RQ3 (Research Question 3) - 6 notebooks total:**
+
+*Deep Learning Approaches:*
+- `colab notebooks/DeepLearningMultilabel_FS1.ipynb` (Feature Selection 1)
+- `colab notebooks/DeepLearningMultilabel_FS2.ipynb` (Feature Selection 2)
+- `colab notebooks/DeepLearningMultilabel_FS3.ipynb` (Feature Selection 3)
+
+*Machine Learning Approaches:*
+- `colab notebooks/MachineLearningMultilabelRQ_3_fs1_out_clean.ipynb` (Feature Selection 1)
+- `colab notebooks/MachineLearningMultilabelRQ_3_fs2_out_clean.ipynb` (Feature Selection 2)
+- `colab notebooks/MachineLearningMultilabelRQ_3_fs3_out_clean.ipynb` (Feature Selection 3)
+
+#### 3. Execution Tips
+- **Runtime**: Use GPU runtime for Deep Learning notebooks (Runtime → Change runtime type → GPU)
+- **Memory**: Ensure sufficient RAM (12GB+ recommended)
+- **Execution order**: Always run cells sequentially from top to bottom
+- **Time**: Each notebook may take 2-4 hours to complete
+- **Restart**: If you encounter memory issues, restart runtime and re-run from the beginning
+
+#### 4. Expected Outputs
+- Trained models saved as `.pkl` files
+- Performance metrics and comparison tables
+- Feature importance rankings
+- Visualization plots and confusion matrices
+
 ## Comments
 
 If you have difficulty running any of the codes, use the notebooks available in the colab notebooks folder.
-In notebooks there will be 5 lines to install the main libraries that will be used to train the model: pycaret, dataframe-image and optuna.
-The lines below this until before the settings of the first smell long method are responsible for loading and checking the file and excluding features that are not necessary for the feature selection.
-It is necessary to run this part from importing the libraries to filtering the columns when running the code for each smell
+The setup section (from importing libraries to filtering columns) must be executed completely before running any smell-specific analysis code.
 
 
