@@ -1,7 +1,73 @@
 # ImprovMLCQ
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.16748785.svg)](https://doi.org/10.5281/zenodo.16748785)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+## Abstract
+This repository contains the implementation and datasets for "ImprovMLCQ: Improving Machine Learning Code Quality Detection through Enhanced Feature Selection and Multi-label Classification". The project extends the MLCQ dataset with code smell detection using PMD, Organic, and Designite tools, implementing both Machine Learning and Deep Learning approaches for multi-label code smell classification.
 
 Access full paper [here](SBCARS_2025___ImprovMLCQ.pdf)
+
+
+### Quick Start:
+1. Download datasets from [Zenodo](https://zenodo.org/records/14834187)
+2. Open desired notebook in Google Colab
+3. Upload datasets to Colab environment
+4. Follow notebook-specific instructions
+5. Execute cells sequentially
+
+## Repository Structure
+
+```
+ImprovMLCQ/
+├── README.md                           # Main documentation
+├── LICENSE                             # MIT License
+├── SBCARS_2025___ImprovMLCQ.pdf       # Research paper
+├── apply_model.py                      # Script to use trained models
+├── label_encoder.py                    # Label encoding utilities
+├── resource_skills.txt                 # Resource requirements guide
+├── colab notebooks/                    # Jupyter notebooks for experiments
+│   ├── RQ_1.ipynb                     # Research Question 1 analysis
+│   ├── RQ_2.ipynb                     # Research Question 2 analysis
+│   ├── EDA_Improv.ipynb               # Exploratory Data Analysis
+│   ├── DeepLearningMultilabel_FS1.ipynb    # Deep Learning with Feature Selection 1
+│   ├── DeepLearningMultilabel_FS2.ipynb    # Deep Learning with Feature Selection 2
+│   ├── DeepLearningMultilabel_FS3.ipynb    # Deep Learning with Feature Selection 3
+│   ├── MachineLearningMultilabelRQ_3_fs1_out_clean.ipynb  # ML with FS1
+│   ├── MachineLearningMultilabelRQ_3_fs2_out_clean.ipynb  # ML with FS2
+│   └── MachineLearningMultilabelRQ_3_fs3_out_clean.ipynb  # ML with FS3
+└── results/                           # Experimental results
+    ├── DeepLearning All Smells.csv    # Deep Learning results summary
+    ├── smell_classification_report_FS1_Multilabel.xlsx  # FS1 results
+    ├── smell_classification_report_FS2_Multilabel.xlsx  # FS2 results
+    └── smell_classification_report_FS3_Multilabel.xlsx  # FS3 results
+```
+
+### External Dependencies (Download Required)
+```
+External Data (Zenodo):
+├── out.csv                            # Original extended MLCQ dataset
+├── out_with_labelEncoding.csv         # Label encoded dataset
+├── out_clean.csv                      # Cleaned dataset (recommended)
+└── Features/                          # Feature definitions and rankings
+    ├── features_all_features.csv      # Complete feature dictionary
+    └── top5_features_code_smells.csv  # Top 5 features per smell
+```
+
+### Generated Outputs (After Execution)
+```
+Generated Files:
+├── models_multilabel_FS1.pkl         # Trained ML models (FS1)
+├── models_multilabel_FS2.pkl         # Trained ML models (FS2)
+├── models_multilabel_FS3.pkl         # Trained ML models (FS3)
+└── prediction_results.csv            # Model predictions
+```
+
+**Key Directories:**
+- **`colab notebooks/`**: All Jupyter notebooks for reproducing experiments
+- **`results/`**: Pre-computed experimental results and reports
+- **Root files**: Main scripts, documentation, and paper
+
+**External Data**: Must be downloaded from [Zenodo](https://zenodo.org/records/14834187) before running experiments.
 ### Tools
 
 We use three tools do classify code smells: PMD, Organic, Designate.
@@ -79,24 +145,6 @@ A review of missing records was conducted, and all empty fields were imputed wit
 Duplicate rows were removed
 We run the Machine Learning and Deep Learning algorithms using out_clean.csv. This file can also be found at: [Link Zenodo](https://zenodo.org/records/14834187)
 You can dowload this code label enconder 
-### Research Questions
-
-To answer the research questions, we used the notebooks available in the repository.
-For RQ1 we used the notebook in the folder colab notebooks/RQ_1.ipynb
-For RQ2 we used the notebook in the folder colab notebooks/RQ_2.ipynb
-For RQ3 we create 6 notebooks, each of these 6 for 1 feature selection in the folder colab notebooks/DeepLearningMultilabel_FS1.ipynb, notebooks/DeepLearningMultilabel_FS2.ipynb,notebooks/DeepLearningMultilabel_FS3.ipynb, colab notebooks/MachineLearningMultilabelRQ_3_fs1_out_clean.ipynb,colab notebooks/MachineLearningMultilabelRQ_3_fs2_out_clean.ipynb and colab notebooks/MachineLearningMultilabelRQ_3_fs3_out_clean.ipynb.
-
-### Using the model
-
-To use the model, open the code "apply_model.py" and edit the model name for which model you will use (models_multilabel_FS2.pkl and models_multilabel_FS3.pkl). Run the code.
-The number 2 in the nomenclature represents the models that we extracted when we ran FS2, we are using them because they were the ones that had the best results in the experiments
-
-
-```Python
-model_name = 'models_multilabel_FS2.pkl' 
-```
-
-The model is loaded and makes predictions, generating a "prediction_results.csv" file with the prediction of whether or not it has the model's code smell for each java file.
 ### Features
 Inside the feature folder is the .csv file features - all_features.csv and a file called top5 features code smells. On the y-axis are the names of the most relevant features, in order of importance from top to bottom. The x-axis indicates the weight of each feature for each smell.
 
@@ -160,22 +208,40 @@ Before running the models, it is necessary to clean and standardize the data. Ex
 - `colab notebooks/MachineLearningMultilabelRQ_3_fs2_out_clean.ipynb` (Feature Selection 2)
 - `colab notebooks/MachineLearningMultilabelRQ_3_fs3_out_clean.ipynb` (Feature Selection 3)
 
-#### 3. Execution Tips
-- **Runtime**: Use GPU runtime for Deep Learning notebooks (Runtime → Change runtime type → GPU)
-- **Memory**: Ensure sufficient RAM (12GB+ recommended)
-- **Execution order**: Always run cells sequentially from top to bottom
-- **Time**: Each notebook may take 2-4 hours to complete
-- **Restart**: If you encounter memory issues, restart runtime and re-run from the beginning
-
-#### 4. Expected Outputs
+#### 3. Expected Outputs
 - Trained models saved as `.pkl` files
 - Performance metrics and comparison tables
 - Feature importance rankings
 - Visualization plots and confusion matrices
 
-## Comments
+## Reproducibility
 
-If you have difficulty running any of the codes, use the notebooks available in the colab notebooks folder.
-The setup section (from importing libraries to filtering columns) must be executed completely before running any smell-specific analysis code.
+All experiments can be fully reproduced using the provided Jupyter notebooks:
+
+- **RQ1**: Statistical analysis of code smell distribution
+- **RQ2**: Comparative analysis of feature selection methods
+- **RQ3**: Machine Learning and Deep Learning model training and evaluation
+
+### Expected Results:
+- Trained models saved as `.pkl` files
+- Performance metrics and comparison tables
+- Feature importance rankings
+- Visualization plots and confusion matrices
+
+### Using the model
+
+To use the model, open the code "apply_model.py" and edit the model name for which model you will use (models_multilabel_FS2.pkl and models_multilabel_FS3.pkl). Run the code.
+The number 2 in the nomenclature represents the models that we extracted when we ran FS2, we are using them because they were the ones that had the best results in the experiments
+
+
+```Python
+model_name = 'models_multilabel_FS2.pkl' 
+```
+
+The model is loaded and makes predictions, generating a "prediction_results.csv" file with the prediction of whether or not it has the model's code smell for each java file.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 
