@@ -1,5 +1,5 @@
 # ImprovMLCQ
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.16748785.svg)](https://doi.org/10.5281/zenodo.16748785)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.16748785.svg)](https://doi.org/10.5281/zenodo.16790794)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Abstract
