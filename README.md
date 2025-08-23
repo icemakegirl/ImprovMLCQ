@@ -7,14 +7,6 @@ This repository contains the implementation and datasets for "ImprovMLCQ: Improv
 
 Access full paper [here](SBCARS_2025___ImprovMLCQ.pdf)
 
-
-### Quick Start:
-1. Download datasets from [Zenodo](https://zenodo.org/records/14834187)
-2. Open desired notebook in Google Colab
-3. Upload datasets to Colab environment
-4. Follow notebook-specific instructions
-5. Execute cells sequentially
-
 ## Repository Structure
 
 ```
@@ -68,9 +60,14 @@ Generated Files:
 - **Root files**: Main scripts, documentation, and paper
 
 **External Data**: Must be downloaded from [Zenodo](https://zenodo.org/records/14834187) before running experiments.
-### Tools
 
-We use three tools do classify code smells: PMD, Organic, Designate.
+## Creating the ImprovMLCQ Dataset
+
+**For Advanced Users Only** - This section describes how to recreate the dataset from scratch. **Most users should skip this section** and proceed directly to [Reproducing Results](#reproducing-results).
+
+### Tools Required
+
+We use three tools to classify code smells: PMD, Organic, Designite.
 Before using these tools, the user must copy all the project's .java to a single root folder. This folder will be used by the tools to label the code smells.
 The tools were used to extend the MLCQ with metrics and code smells labeling .ck .
 To run the tools we need to download all the projects that are in our ImproveMLCQ dataset locally.
@@ -110,14 +107,14 @@ Through these two csvs, we will obtain data to extract the following features: s
 
 ### Data
 link out.csv and out_with_labelEncoding: [Link Zenodo](https://zenodo.org/records/14834187)
-
 The out.csv file is the extension we make of MLCQ by adding the tool analysis, and this file is used within "apply_model.py" to use the models
 We create data dictionaries that contain all the features: FS1, FS2, FS3 and the definition of each of these features.
 Also contains the files of the top 10 features used for FS3 for each code smell.
 To access these files, go to the Features folder.
 
-The label encoding technique was used to transform the columns: which came in text formats into numeric data.
-You can run the code below and modify the out.csv to apply this label encoding technique or download the out_with_labelEncoding.csv file that already comes with this labeling assigned
+**For Basic Reproduction**: Use the pre-processed `out_clean.csv` file (recommended).
+
+**For Advanced Users Only**: The label encoding technique was used to transform the columns which came in text formats into numeric data. You can run the code below and modify the out.csv to apply this label encoding technique, or download the out_with_labelEncoding.csv file that already comes with this labeling assigned
 
 ```
 from sklearn.preprocessing import LabelEncoder
@@ -134,7 +131,7 @@ df['ck_method_hasjavadoc']= label_encoder.fit_transform(df['ck_method_hasjavadoc
 df['type']= label_encoder.fit_transform(df['type'])
 df['smell_organic']= label_encoder.fit_transform(df['smell_organic'])
 df['smell_pmd']= label_encoder.fit_transform(df['smell_pmd'])
-f['background']= label_encoder.fit_transform(df['background'])
+df['background']= label_encoder.fit_transform(df['background'])
 
 df.to_csv('out.csv', index=False)
 ```
@@ -153,8 +150,7 @@ scikit-learn, numpy, optuna, pycaret, os, ydata_profiling and os
 
 ### Dataset Cleaning
 Before running the models, it is necessary to clean and standardize the data. Execute the file **"EDA_Improv.ipynb"**, and among its results, you should use the file **"out_clean.csv"** for model execution.
-
-## How to Run Colab Notebooks
+## Reproducing Results
 
 ### Prerequisites
 1. Download the dataset files from [Zenodo](https://zenodo.org/records/14834187):
@@ -162,12 +158,19 @@ Before running the models, it is necessary to clean and standardize the data. Ex
    - `out_with_labelEncoding.csv` 
    - `out_clean.csv`
 2. Have a Google account to access Google Colab
+3. Upload files to a folder in colab
 
 ### Step-by-Step Guide
 
 #### 1. Initial Setup (Required for ALL notebooks)
 1. **Open the notebook** in Google Colab
-2. **Install required libraries**:
+2. **Change the notebooks** path to where you stored the datasets out and out_clean
+3. **If you upload the file to Colab**, ignore the first line about importing the dataset from a path dnd when reading the dataset, remove the content from: df = pd.read_csv('/out_clean.csv', index_col=0)
+   - Click on the folder icon in the left sidebar
+   - Upload `out_clean.csv` (recommended for model execution)
+   - Or upload `out.csv` if you want to apply label encoding
+
+4. **Install required libraries**:
    - For **Machine Learning notebooks** only, run these lines at the beginning:
    ```python
    !pip install pycaret
@@ -175,44 +178,37 @@ Before running the models, it is necessary to clean and standardize the data. Ex
    !pip install optuna
    ```
    - For **Deep Learning notebooks**, no additional library installation is required
-3. **Upload your dataset** to Colab:
-   - Click on the folder icon in the left sidebar
-   - Upload `out_clean.csv` (recommended for model execution)
-   - Or upload `out.csv` if you want to apply label encoding
-
-4. **Run the initial setup section** - this includes:
+5. **Run the initial setup section** - this includes:
    - Importing all necessary libraries
    - Loading and checking the dataset file
    - Excluding features that are not necessary for feature selection
    - **Important**: Always run this section completely before proceeding to smell-specific analysis
 
-#### 2. Running Research Question Notebooks
+#### 2. Notebook Descriptions
 
-**For RQ1 (Research Question 1):**
-- Open and run `colab notebooks/RQ_1.ipynb`
-- Follow the initial setup, then execute all cells sequentially
+**Data Preparation:**
+- **`EDA_Improv.ipynb`**: Exploratory Data Analysis and dataset cleaning. Generates the `out_clean.csv` file used by all other notebooks. Includes data profiling, missing value analysis, and preprocessing steps.
 
-**For RQ2 (Research Question 2):**
-- Open and run `colab notebooks/RQ_2.ipynb`
-- Follow the initial setup, then execute all cells sequentially
+**Research Questions:**
 
-**For RQ3 (Research Question 3) - 6 notebooks total:**
+**RQ1 - Statistical Analysis:**
+- **`RQ_1.ipynb`**: Analyzes code smell distribution across the dataset. Provides descriptive statistics, correlation analysis, and visualization of code smell patterns in Java projects.
+
+**RQ2 - Feature Selection Comparison:**
+- **`RQ_2.ipynb`**: Compares different feature selection methods (FS1, FS2, FS3). Evaluates the effectiveness of each approach and identifies the most relevant features for code smell detection.
+
+**RQ3 - Model Training and Evaluation (6 notebooks):**
 
 *Deep Learning Approaches:*
-- `colab notebooks/DeepLearningMultilabel_FS1.ipynb` (Feature Selection 1)
-- `colab notebooks/DeepLearningMultilabel_FS2.ipynb` (Feature Selection 2)
-- `colab notebooks/DeepLearningMultilabel_FS3.ipynb` (Feature Selection 3)
+- **`DeepLearningMultilabel_FS1.ipynb`**: Neural network training using all features (FS1). Implements multi-label classification with deep learning models.
+- **`DeepLearningMultilabel_FS2.ipynb`**: Neural network training using statistically selected features (FS2). Optimized feature set for better performance.
+- **`DeepLearningMultilabel_FS3.ipynb`**: Neural network training using top-ranked features (FS3). Uses the most important features identified through feature importance analysis.
 
 *Machine Learning Approaches:*
-- `colab notebooks/MachineLearningMultilabelRQ_3_fs1_out_clean.ipynb` (Feature Selection 1)
-- `colab notebooks/MachineLearningMultilabelRQ_3_fs2_out_clean.ipynb` (Feature Selection 2)
-- `colab notebooks/MachineLearningMultilabelRQ_3_fs3_out_clean.ipynb` (Feature Selection 3)
+- **`MachineLearningMultilabelRQ_3_fs1_out_clean.ipynb`**: Traditional ML algorithms (Random Forest, SVM, XGBoost) using all features (FS1). Includes hyperparameter tuning with Optuna.
+- **`MachineLearningMultilabelRQ_3_fs2_out_clean.ipynb`**: Traditional ML algorithms using statistically selected features (FS2). Compares performance across different algorithms.
+- **`MachineLearningMultilabelRQ_3_fs3_out_clean.ipynb`**: Traditional ML algorithms using top-ranked features (FS3). Focuses on the most predictive features for optimal performance.
 
-#### 3. Expected Outputs
-- Trained models saved as `.pkl` files
-- Performance metrics and comparison tables
-- Feature importance rankings
-- Visualization plots and confusion matrices
 
 ## Reproducibility
 
