@@ -165,7 +165,7 @@ Before running the models, it is necessary to clean and standardize the data. Ex
 #### 1. Initial Setup (Required for ALL notebooks)
 1. **Open the notebook** in Google Colab
 2. **Change the notebooks** path to where you stored the datasets out and out_clean
-3. **If you upload the file to Colab**, ignore the first line about importing the dataset from a path dnd when reading the dataset, remove the content from: df = pd.read_csv('/out_clean.csv', index_col=0)
+3. **If you upload the file to Colab**, ignore the first line about importing the dataset from a path dnd when reading the dataset, remove the content from: `df = pd.read_csv('out_clean.csv', index_col=0)`
    - Click on the folder icon in the left sidebar
    - Upload `out_clean.csv` (recommended for model execution)
    - Or upload `out.csv` if you want to apply label encoding
